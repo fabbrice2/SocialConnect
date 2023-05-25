@@ -1,0 +1,269 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inscription{
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* height: 70vh;
+    width: 40vh; */
+    border: 1px solid #111;
+    padding: 5px;
+    width: 450px;
+    border-radius: 15px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.logo img{
+    width: 50px;
+    object-fit: cover;
+}
+
+.logo span{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+h1{
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.google_connexion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 400px;
+    padding: 5px;
+    border-radius: 50px;
+    border: 2px solid #111;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    margin-bottom: 30px;
+}
+
+.google_connexion:hover{
+    transform: scale(1.1);
+}
+
+.google_connexion img{
+    width: 30px;
+    object-fit: cover;
+}
+
+.google_connexion span{
+    color: #1111117f;
+    font-weight: 800;
+}
+
+.or{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.line{
+    background: #1111117f;
+    width: 180px;
+    height: 2px;
+    
+}
+
+
+.formulaire{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* gap: 30px; */
+}
+form{
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    flex-direction: column;
+    /* gap: 30px; */
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+form label{
+    margin-bottom: 30px;
+    /* color: #1111117f; */
+    font-weight: 800;
+    margin-bottom: 5px;
+    
+}
+
+form input{
+    width: 400px;
+    padding: 5px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #1111117f;
+    font-size: 18px;
+}
+
+form input:hover{
+    border: 1px solid #111;
+}
+
+.formulaire .text{
+    width: 400px;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+.birth{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.birth h2{
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sex{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sex label{
+    margin-bottom: 0;
+    /* color: #1111117f; */
+    font-weight: 800;
+    /* width: 15px; */
+}
+
+.sex input{
+    width: 15px;
+}
+
+.date #day{
+    width: 50px;
+    margin-right: 50px;
+}
+
+.month #month{
+    width: 170px;
+    padding: 5px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #1111117f;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.year #year{
+    width: 70px;
+}
+
+.text span{
+    color: #2667CA;  
+}
+
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.submit #button{
+    padding: 5px;
+    width: 180px;
+    height: 50px;
+    border-radius: 50px;
+    background: #2667CA;
+    color: white;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.submit #button:hover{
+transform: scale(1.1);
+}
+
+
+a{
+   color: #2667CA;  
+}

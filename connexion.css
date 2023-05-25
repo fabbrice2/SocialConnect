@@ -1,0 +1,232 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+    background:  rgb(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Slab', serif;
+    flex-direction: column;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background: black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom:50px;
+    cursor: pointer;   
+}
+
+header img{
+    width: 50px;
+    object-fit: cover;
+    padding-left: 50px;
+}
+
+header span{
+    color: white;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+h1{
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-align: center;
+    color: white;
+}
+.connexion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: black;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.google_connect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 300px;
+    padding: 5px;
+    border-radius: 50px;
+    border: 1px solid #ffffff7f;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.google_connect:hover{
+    border: 1px solid white;
+}
+
+.google_connect img{
+    width: 30px;
+    object-fit: cover;
+}
+
+.google_connect span{
+    color: white;
+    font-weight: 800;
+}
+
+.line{
+    background: #ffffff7f;
+    width: 500px;
+    height: 0.5px;
+    margin-bottom: 30px;
+}
+
+form{
+    color: white;
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+
+form input{
+    background: transparent;
+    border: 1px solid #ffffff7f;
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+    width: 300px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* .submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+} */
+
+#button{
+    padding: 5px;
+    width: 310px;
+    margin-top: 25px;
+    height: 40px;
+    border-radius: 50px;
+    background: #2667CA;
+    color: white;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#button:hover{
+    transform: scale(1.1);
+}
+
+h2 {
+    margin: 30px;
+    transition: all 0.1s ease-out;
+}
+
+h2 a{
+    color: white;
+}
+
+h2 a:hover{
+    color: #2667CA;
+
+}
+
+.inscription {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.inscription span{
+    text-decoration: underline
+}
+
+
+
+.inscription a span{
+    color: white;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+;
+
+}
+
+.inscription a span:hover{
+    color: #2667CA;
+
+
+}
+
+.icon{
+    position: absolute;
+    left: 60%;
+    transform: translateY(-170%);
+    display: flex;
+    cursor: pointer;
+}
+
+.see{
+    display: flex;
+}
+
+.mask{
+    display: none;
+}
