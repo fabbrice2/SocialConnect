@@ -1,6 +1,6 @@
 <?php
-$title = 'connexion-SocialConnnect';
-require 'header2.php';
+$title = "connexion-SocialConnnect";
+require "header2.php";
 ?>
 
 <body>
@@ -55,4 +55,4 @@ require 'header2.php';
 
 
 
-<?php require 'footer.php';?>
+<?php require "footer.php"; ?>

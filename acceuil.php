@@ -10,51 +10,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-    <?php
-    $title = 'Acceuil-SocialConnnect';?>
-    <title><?php if (isset($title)) { echo $title; } else { echo 'SocialConnect'; } ?></title>
+    <?php $title = "Acceuil-SocialConnnect"; ?>
+    <title><?php if (isset($title)) {
+        echo $title;
+    } else {
+        echo "SocialConnect";
+    } ?></title>
 </head>
 <body>
 <?php
-
-// require_once 'traitement.php';
-
-// $username = $uname;
-
 session_start();
 
 $msg = "";
 
-if (isset($_POST['upload'])) {
-    // Vérifier si la soumission du formulaire a déjà été effectuée
-    if (!isset($_SESSION['upload_completed'])) {
-        $target = "images/".basename($_FILES['image']['name']);
+if (isset($_POST["upload"])) {
+    if (!isset($_SESSION["upload_completed"])) {
+        $target = "images/" . basename($_FILES["image"]["name"]);
         $db = mysqli_connect("localhost", "root", "", "membres");
-        $image = $_FILES['image']['name'];
-        $text = $_POST['text'];
+        $image = $_FILES["image"]["name"];
+        $text = $_POST["text"];
         $sql = "INSERT INTO images (image, text) VALUES ('$image', '$text')";
         mysqli_query($db, $sql);
 
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target)) {
             $msg = "succès";
         } else {
             $msg = "erreur";
         }
 
-        // Marquer la soumission du formulaire comme terminée
-        $_SESSION['upload_completed'] = true;
+        $_SESSION["upload_completed"] = true;
 
-        // Redirection vers une autre page après la publication
         header("Location: acceuil.php");
-        exit(); // Assurez-vous de terminer le script après la redirection
+        exit();
     }
 }
 
-// Réinitialiser la variable de session lors du chargement initial de la page
-unset($_SESSION['upload_completed']);
+unset($_SESSION["upload_completed"]);
 ?>
 
-<!-- Le reste de votre code HTML -->
+
 
     <div class="menu">
         <span class="logo">
@@ -93,7 +87,8 @@ unset($_SESSION['upload_completed']);
             </ul>
         </div>
     </div>
-    <div class="banner_post">
+    
+     <div class="banner_post">
     <div class="acceuil">
         <div class="story">
             <ul>
@@ -149,44 +144,33 @@ unset($_SESSION['upload_completed']);
             </li>
             </ul>
         </div>
-    </div>
-    <form class="wrap" id="comment-form" method="POST" action="acceuil.php" enctype="multipart/form-data">
-            <div class="user">
-                <img src="https://via.placeholder.com/50x50" alt="profil">
-                <input type="text" name="text" placeholder="Quoi de neuf ?">
-            </div>
-            <input type="hidden" name="size" value="1000000">
-            <div>
-            <input type="file" name="image" >
-            </div>
-            <div class="pub">
-            <button type="submit" name="upload">Publier</button>
-            </div>
-    </form>
-    <?php
+    </div> 
 
-            $db = mysqli_connect("localhost", "root", "", "membres");
-            $sql = "SELECT * FROM images";
-            $result = mysqli_query($db, $sql);
-            while($row = mysqli_fetch_array($result)){
-                echo '<div class="post">';
-                echo '<div class="post_header">';
-                echo '<div class="user">';
-                    echo '<img src="https://via.placeholder.com/50x50" alt="profil">';
-                    echo "<h1>Toto</h1>";
-                echo "</div>";
-                echo '<span><ion-icon name="trash-outline"></ion-icon></span>';
-                echo "</div>";
-                echo "<div class='post_img'>";
-                echo "<img src='images/".$row['image']."' >";
-                echo "<p>".$row['text']."</p>";
-                echo "</div>";
-                echo "<div class='comment'>
+  
+    
+    <?php
+    $db = mysqli_connect("localhost", "root", "", "membres");
+    $sql = "SELECT * FROM images";
+    $result = mysqli_query($db, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+        echo '<div class="post">';
+        echo '<div class="post_header">';
+        echo '<div class="user">';
+        echo '<img src="https://via.placeholder.com/50x50" alt="profil">';
+        echo "<h1>Toto</h1>";
+        echo "</div>";
+        echo '<span><ion-icon name="trash-outline"></ion-icon></span>';
+        echo "</div>";
+        echo "<div class='post_img'>";
+        echo "<img src='images/" . $row["image"] . "' >";
+        echo "<p>" . $row["text"] . "</p>";
+        echo "</div>";
+        echo "<div class='comment'>
                         <input type='text' name='comment' placeholder='Ajouter un commentaire...'>
                         </div>";
-                echo '</div>';
-            }
-        ?>
+        echo "</div>";
+    }
+    ?>
     <div class="post">
         <div class="post_header">
             <div class="user">
@@ -217,8 +201,104 @@ unset($_SESSION['upload_completed']);
 
     
 
+
+    <div style="border: 2px solid red;
+margin-left: 134px;
+height: 89px;
+width: 132vh;" class="comment-section">
+        <input type="file" id="image-input" accept="image/*">
+        <textarea id="comment-input" placeholder="Ajouter un commentaire"></textarea>
+        <button style="background-color: red;
+color: white;
+font-weight: 600;" id="post-button">Poster</button>
+    </div>
+
+    <div style="border: 2px solid green;" id="post-section">
+        <!-- Les postes seront affichés ici -->
+    </div>
+
+    <script>
+        const imageInput = document.getElementById("image-input");
+        const commentInput = document.getElementById("comment-input");
+        const postButton = document.getElementById("post-button");
+        const postSection = document.getElementById("post-section");
+
+        let posts = [];
+
+        postButton.addEventListener("click", () => {
+            const comment = commentInput.value;
+            if (comment) {
+                const imageFile = imageInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const imageSrc = e.target.result;
+                    const post = {
+                        id: generateId(),
+                        comment: comment,
+                        image: imageSrc
+                    };
+
+                    posts.push(post);
+                    displayPosts();
+
+                    // Réinitialiser les champs
+                    commentInput.value = "";
+                    imageInput.value = "";
+                };
+
+                if (imageFile) {
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    reader.onload();
+                }
+            }
+        });
+
+        function displayPosts() {
+            postSection.innerHTML = "";
+
+            posts.forEach((post) => {
+                const postElement = document.createElement("div");
+                postElement.classList.add("post");
+                postElement.innerHTML = `
+                    <img src="${post.image}" alt="Post Image">
+                    <p>${post.comment}</p>
+                    <button onclick="editPost('${post.id}')">Modifier</button>
+                    <button onclick="deletePost('${post.id}')">Supprimer</button>
+                `;
+
+                postSection.appendChild(postElement);
+            });
+        }
+
+        function editPost(postId) {
+            const post = posts.find(post => post.id === postId);
+            if (post) {
+                const newComment = prompt("Modifier le commentaire :", post.comment);
+                if (newComment) {
+                    post.comment = newComment;
+                    displayPosts();
+                }
+            }
+        }
+
+        function deletePost(postId) {
+            const index = posts.findIndex(post => post.id === postId);
+            if (index !== -1) {
+                posts.splice(index, 1);
+                displayPosts();
+            }
+        }
+
+        function generateId() {
+            return Math.random().toString(36).substr(2, 9);
+        }
+    </script>
+
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="acceuil"></script>
+<script src="acceuil.js"></script>
 </body>
 </html>

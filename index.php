@@ -1,29 +1,22 @@
 <?php
 $msg = "";
-    if (isset($_POST['upload'])) {
+if (isset($_POST["upload"])) {
+    $target = "images/" . basename($_FILES["image"]["name"]);
 
-        $target = "images/".basename($_FILES['image']['name']);
+    $db = mysqli_connect("localhost", "root", "", "membres");
 
-       $db = mysqli_connect("localhost", "root", "", "membres");
+    $image = $_FILES["image"]["name"];
+    $text = $_POST["text"];
 
-       $image = $_FILES['image']['name'];
-       $text = $_POST['text'];
+    $sql = "INSERT INTO images (image, text) VALUES ('$image', '$text')";
+    mysqli_query($db, $sql);
 
-       $sql = "INSERT INTO images (image, text) VALUES ('$image', '$text')";
-       mysqli_query($db, $sql);
-
-       if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target)) {
         $msg = "succès";
-       }else{
+    } else {
         $msg = "erreur";
-       }
-
     }
-
-  // Create database connection
-  
-
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,16 +32,15 @@ $msg = "";
 
 
 <?php
-     $db = mysqli_connect("localhost", "root", "", "membres");
-     $sql = "SELECT * FROM images";
-     $result = mysqli_query($db, $sql);
-      while($row = mysqli_fetch_array($result)){
-        echo "<div id='img_div'>";
-        echo "<img src='images/".$row['image']."' >";
-        echo "<p>".$row['text']."</p>";
-        echo "</div>";
-      }
-
+$db = mysqli_connect("localhost", "root", "", "membres");
+$sql = "SELECT * FROM images";
+$result = mysqli_query($db, $sql);
+while ($row = mysqli_fetch_array($result)) {
+    echo "<div id='img_div'>";
+    echo "<img src='images/" . $row["image"] . "' >";
+    echo "<p>" . $row["text"] . "</p>";
+    echo "</div>";
+}
 ?>
 
 

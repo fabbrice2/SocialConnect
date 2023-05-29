@@ -1,7 +1,8 @@
-<?php 
+<?php
 
-$title = 'Inscription-SocialConnnect';
-require 'header.php'; ?>
+$title = "Inscription-SocialConnnect";
+require "header.php";
+?>
 
 
 
@@ -121,4 +122,4 @@ require 'header.php'; ?>
 </body>
 
 
-<?php require 'footer.php'; ?>
+<?php require "footer.php"; ?>
